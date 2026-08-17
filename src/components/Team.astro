@@ -1,54 +1,36 @@
 ---
 import photos from '../data/photos.json';
 
-const text = await import('../data/texts/gallery.md');
-const { sectionTitle, sectionSubtitle, sections } = text.frontmatter;
+const teamPhotos = photos.filter((p) => p.category === 'equipo');
 ---
 
-<section id="galeria" class="gallery">
-  <div class="gallery-container">
-    <h2 class="section-title">{sectionTitle}</h2>
-    <p class="section-subtitle">
-      {sectionSubtitle}
-    </p>
+<section id="equipo" class="team">
+  <div class="team-container">
+    <h2 class="section-title">Nuestro Equipo</h2>
+    <p class="section-subtitle">Los estudiantes que investigan, digitalizan y preservan la memoria de nuestro liceo.</p>
 
-    {sections.map((section) => {
-      const sectionPhotos = photos.filter((p) => p.category === section.category);
-      if (sectionPhotos.length === 0) return null;
-      return (
-        <div class="gallery-section" id={section.id}>
-          <div class="section-header">
-            <span class="section-icon">{section.icon}</span>
-            <div>
-              <h3 class="section-heading">{section.title}</h3>
-              <p class="section-description">{section.description}</p>
-            </div>
-          </div>
-          <div class="gallery-grid">
-            {sectionPhotos.map((photo) => (
-              <figure class="gallery-item" data-lightbox>
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading="lazy"
-                  width="600"
-                  height="400"
-                />
-                <figcaption class="gallery-caption">
-                  {photo.year && <span class="gallery-year">{photo.year}</span>}
-                  <span class="gallery-title">{photo.title}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      );
-    })}
+    <div class="team-grid">
+      {teamPhotos.map((photo) => (
+        <figure class="team-item" data-lightbox-team>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            width="600"
+            height="400"
+          />
+          <figcaption class="team-caption">
+            {photo.year && <span class="team-year">{photo.year}</span>}
+            <span class="team-title">{photo.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   </div>
 </section>
 
 <script>
-  document.querySelectorAll('[data-lightbox]').forEach((item) => {
+  document.querySelectorAll('[data-lightbox-team]').forEach((item) => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
       if (!img) return;
@@ -83,12 +65,12 @@ const { sectionTitle, sectionSubtitle, sections } = text.frontmatter;
 </script>
 
 <style>
-  .gallery {
+  .team {
     padding: 6rem 2rem;
     background: #faf7f2;
   }
 
-  .gallery-container {
+  .team-container {
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -108,49 +90,13 @@ const { sectionTitle, sectionSubtitle, sections } = text.frontmatter;
     font-size: 1.05rem;
   }
 
-  .gallery-section {
-    margin-bottom: 4rem;
-  }
-
-  .gallery-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .section-icon {
-    font-size: 1.75rem;
-    line-height: 1;
-    margin-top: 0.15rem;
-  }
-
-  .section-heading {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.25rem;
-  }
-
-  .section-description {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
-    line-height: 1.5;
-  }
-
-  .gallery-grid {
+  .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
   }
 
-  .gallery-item {
+  .team-item {
     margin: 0;
     border-radius: 8px;
     overflow: hidden;
@@ -159,26 +105,26 @@ const { sectionTitle, sectionSubtitle, sections } = text.frontmatter;
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .gallery-item:hover {
+  .team-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   }
 
-  .gallery-item img {
+  .team-item img {
     width: 100%;
     height: 240px;
     object-fit: cover;
     display: block;
   }
 
-  .gallery-caption {
+  .team-caption {
     padding: 1rem 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .gallery-year {
+  .team-year {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-accent-red);
@@ -187,13 +133,13 @@ const { sectionTitle, sectionSubtitle, sections } = text.frontmatter;
     border-radius: 4px;
   }
 
-  .gallery-title {
+  .team-title {
     font-size: 0.9rem;
     color: var(--color-text-muted);
   }
 
   @media (max-width: 768px) {
-    .gallery-grid {
+    .team-grid {
       grid-template-columns: 1fr;
     }
   }

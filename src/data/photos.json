@@ -19,5 +19,45 @@
     "year": "2026",
     "title": "Sesión de trabajo",
     "category": "equipo"
+  },
+  {
+    "src": "/images/archivo-01.jpg",
+    "alt": "Documento histórico del archivo del liceo",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-02.jpg",
+    "alt": "Fotografía antigua rescatada del archivo",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-03.jpg",
+    "alt": "Registro histórico del liceo",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-04.jpg",
+    "alt": "Documento antiguo del patrimonio del liceo",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-05.jpg",
+    "alt": "Material de archivo recuperado",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-06.jpg",
+    "alt": "Fotografía histórica del liceo",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-07.jpg",
+    "alt": "Documento del patrimonio histórico",
+    "category": "hallazgos"
+  },
+  {
+    "src": "/images/archivo-08.jpg",
+    "alt": "Archivo del liceo en conservación",
+    "category": "hallazgos"
   }
 ]
