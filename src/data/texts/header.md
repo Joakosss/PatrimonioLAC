@@ -1,7 +1,6 @@
 ---
 logo:
-  icon: "📚"
-  text: "Taller de Patrimonio"
+  text: "Taller de Patrimonio LAC"
 nav:
   - label: "Equipo"
     href: "#equipo"

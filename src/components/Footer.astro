@@ -1,20 +1,17 @@
 ---
-const text = await import('../data/texts/footer.md');
+const text = await import("../data/texts/footer.md");
 const { logo, name, school, links, email, copyright } = text.frontmatter;
 ---
 
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-brand">
-      <span class="footer-logo">{logo.icon}</span>
       <span class="footer-name">{name}</span>
       <span class="footer-school">{school}</span>
     </div>
 
     <div class="footer-links">
-      {links.map((item) => (
-        <a href={item.href}>{item.label}</a>
-      ))}
+      {links.map((item) => <a href={item.href}>{item.label}</a>)}
     </div>
 
     <div class="footer-contact">
@@ -24,7 +21,9 @@ const { logo, name, school, links, email, copyright } = text.frontmatter;
     </div>
 
     <p class="footer-copy">
-      © {new Date().getFullYear()} {name} {school}. {copyright}
+      © {new Date().getFullYear()}
+      {name}
+      {school}. {copyright}
     </p>
   </div>
 </footer>

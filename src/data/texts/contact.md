@@ -13,6 +13,6 @@ cards:
   - icon: "✉️"
     title: "Email"
     detail: "Escribinos para compartir materiales o hacer consultas."
-    link: "tallerhistoria@arrietacanas.edu.uy →"
-    href: "mailto:tallerhistoria@arrietacanas.edu.uy"
+    link: "patrimoniolac212@gmail.com →"
+    href: "mailto:patrimoniolac212@gmail.com"
 ---

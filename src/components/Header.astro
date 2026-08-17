@@ -1,18 +1,21 @@
 ---
-const text = await import('../data/texts/header.md');
+const text = await import("../data/texts/header.md");
 const { logo, nav } = text.frontmatter;
 ---
 
 <header class="header">
   <nav class="nav">
     <a href="/" class="logo">
-      <span class="logo-icon">{logo.icon}</span>
       <span class="logo-text">{logo.text}</span>
     </a>
     <ul class="nav-links">
-      {nav.map((item) => (
-        <li><a href={item.href}>{item.label}</a></li>
-      ))}
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
