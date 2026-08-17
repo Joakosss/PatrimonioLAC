@@ -1,0 +1,252 @@
+---
+const text = await import('../data/texts/mascot.md');
+const { badge, title, description, origin, images, centerImage } = text.frontmatter;
+---
+
+<section id="mascota" class="mascot">
+  <div class="mascot-container">
+    <div class="mascot-text">
+      <span class="mascot-badge">{badge}</span>
+      <h2 class="mascot-title">{title}</h2>
+      <p class="mascot-description">
+        {description}
+      </p>
+      <p class="mascot-origin">
+        {origin}
+      </p>
+    </div>
+
+    <div class="mascot-images">
+      <div class="mascot-grid">
+        {images.map((img, i) => (
+          <div class={`mascot-img grid-img-${i + 1}`} data-lightbox>
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="600"
+              height="600"
+            />
+            <span class="img-label">{img.label}</span>
+          </div>
+        ))}
+      </div>
+      <div class="mascot-img mascot-center" data-lightbox>
+        <img
+          src={centerImage.src}
+          alt={centerImage.alt}
+          width="600"
+          height="600"
+        />
+        <span class="img-label">{centerImage.label}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('#mascota [data-lightbox]').forEach((item) => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (!img) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      overlay.innerHTML = `
+        <div class="lightbox-content">
+          <img src="${img.src}" alt="${img.alt}" />
+          <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+      document.body.style.overflow = 'hidden';
+
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || (e.target as Element).classList.contains('lightbox-close')) {
+          overlay.remove();
+          document.body.style.overflow = '';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          overlay.remove();
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .mascot {
+    padding: 6rem 2rem;
+    background: #faf7f2;
+    overflow: hidden;
+  }
+
+  .mascot-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .mascot-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-yellow);
+    background: rgba(255, 204, 0, 0.15);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .mascot-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1.25rem;
+  }
+
+  .mascot-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .mascot-origin {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    font-style: italic;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-accent-yellow);
+  }
+
+  .mascot-images {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+
+  .mascot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mascot-img {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .mascot-img:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .mascot-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .grid-img-1 {
+    transform: rotate(-2deg);
+  }
+
+  .grid-img-1:hover { transform: rotate(-2deg) scale(1.05); }
+
+  .grid-img-2 {
+    transform: rotate(2deg);
+  }
+
+  .grid-img-2:hover { transform: rotate(2deg) scale(1.05); }
+
+  .grid-img-3 {
+    transform: rotate(1.5deg);
+  }
+
+  .grid-img-3:hover { transform: rotate(1.5deg) scale(1.05); }
+
+  .grid-img-4 {
+    transform: rotate(-1.5deg);
+  }
+
+  .grid-img-4:hover { transform: rotate(-1.5deg) scale(1.05); }
+
+  .mascot-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-3deg);
+    width: 180px;
+    height: 180px;
+    z-index: 5;
+    border: 4px solid white;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .mascot-center:hover {
+    transform: translate(-50%, -50%) rotate(-3deg) scale(1.08);
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.3);
+  }
+
+  .img-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .mascot-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .mascot-origin {
+      border-left: none;
+      padding-left: 0;
+      border-top: 3px solid var(--color-accent-yellow);
+      padding-top: 1rem;
+    }
+
+    .mascot-images {
+      width: 320px;
+      height: 320px;
+      margin: 0 auto;
+    }
+
+    .mascot-grid {
+      gap: 8px;
+    }
+
+    .mascot-center {
+      width: 140px;
+      height: 140px;
+      border-width: 3px;
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import LayoutBase from "../layouts/LayoutBase.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Gallery from "../components/Gallery.astro";
+import BookPreview from "../components/BookPreview.astro";
+import About from "../components/About.astro";
+import Mascot from "../components/Mascot.astro";
+import Archive from "../components/Archive.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<LayoutBase
+  title="Taller de Patrimonio Luis Arrieta Cañas"
+  description="Taller de patrimonio del Liceo Luis Arrieta Cañas. Investigamos, preservamos y compartimos la historia de nuestro liceo a través de fotografías, testimonios y publicaciones."
+>
+  <Header />
+  <main>
+    <Hero />
+    <Gallery />
+    <Archive />
+    <Mascot />
+    <BookPreview />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</LayoutBase>

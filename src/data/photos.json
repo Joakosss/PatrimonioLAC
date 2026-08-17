@@ -1,0 +1,23 @@
+[
+  {
+    "src": "/images/trabajo-01.jpg",
+    "alt": "Equipo del taller investigando en el archivo del liceo",
+    "year": "2025",
+    "title": "Investigación en el archivo",
+    "category": "equipo"
+  },
+  {
+    "src": "/images/trabajo-02.jpg",
+    "alt": "Estudiantes digitalizando fotografías antiguas",
+    "year": "2025",
+    "title": "Digitalización de materiales",
+    "category": "equipo"
+  },
+  {
+    "src": "/images/trabajo-03.jpg",
+    "alt": "Sesión de trabajo del taller de patrimonio",
+    "year": "2026",
+    "title": "Sesión de trabajo",
+    "category": "equipo"
+  }
+]

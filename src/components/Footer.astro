@@ -1,0 +1,103 @@
+---
+const text = await import('../data/texts/footer.md');
+const { logo, name, school, links, email, copyright } = text.frontmatter;
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <span class="footer-logo">{logo.icon}</span>
+      <span class="footer-name">{name}</span>
+      <span class="footer-school">{school}</span>
+    </div>
+
+    <div class="footer-links">
+      {links.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </div>
+
+    <div class="footer-contact">
+      <a href={`mailto:${email}`}>
+        {email}
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      © {new Date().getFullYear()} {name} {school}. {copyright}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 3rem 2rem;
+    background: #1a1a1a;
+    color: #999;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .footer-logo {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .footer-school {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent-yellow);
+  }
+
+  .footer-contact a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover {
+    color: white;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 1rem;
+  }
+</style>

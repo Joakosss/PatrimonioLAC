@@ -1,0 +1,109 @@
+---
+const text = await import('../data/texts/contact.md');
+const { sectionTitle, sectionSubtitle, cards } = text.frontmatter;
+---
+
+<section id="contacto" class="contact">
+  <div class="contact-container">
+    <h2 class="section-title">{sectionTitle}</h2>
+    <p class="section-subtitle">
+      {sectionSubtitle}
+    </p>
+
+    <div class="contact-grid">
+      {cards.map((card) => (
+        <div class="contact-card">
+          <div class="contact-icon">{card.icon}</div>
+          <h3>{card.title}</h3>
+          <p class="contact-detail" set:html={card.detail.replace(/\n/g, '<br />')} />
+          <a
+            href={card.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            {card.link}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 6rem 2rem;
+    background: var(--color-bg);
+  }
+
+  .contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .contact-card {
+    padding: 2.5rem;
+    border-radius: 8px;
+    background: white;
+    text-align: center;
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .contact-detail {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-link {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-accent-red);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover {
+    color: #c4151f;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

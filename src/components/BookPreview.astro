@@ -1,0 +1,152 @@
+---
+const text = await import('../data/texts/book.md');
+const { badge, title, authors, description, coverIcon, coverText, meta } = text.frontmatter;
+---
+
+<section id="libro" class="book">
+  <div class="book-container">
+    <div class="book-layout">
+      <div class="book-cover">
+        <div class="cover-placeholder">
+          <span class="cover-icon">{coverIcon}</span>
+          <span class="cover-text">{coverText}</span>
+        </div>
+      </div>
+
+      <div class="book-info">
+        <p class="book-badge">{badge}</p>
+        <h2 class="book-title">{title}</h2>
+        <p class="book-authors">{authors}</p>
+        <p class="book-description">{description}</p>
+        <div class="book-meta">
+          {meta.map((item) => (
+            <div class="meta-item">
+              <span class="meta-label">{item.label}</span>
+              <span class="meta-value">{item.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .book {
+    padding: 6rem 2rem;
+    background: var(--color-bg);
+  }
+
+  .book-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .book-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .cover-placeholder {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(135deg, var(--color-accent-red) 0%, #b8121b 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    box-shadow: 0 8px 32px rgba(229, 26, 37, 0.2);
+  }
+
+  .cover-icon {
+    font-size: 3rem;
+  }
+
+  .cover-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .book-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent-yellow);
+    background: rgba(255, 204, 0, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .book-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .book-authors {
+    font-size: 0.95rem;
+    color: var(--color-accent-red);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+
+  .book-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .book-meta {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .meta-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+  }
+
+  .meta-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .book-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .cover-placeholder {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .book-meta {
+      justify-content: center;
+    }
+  }
+</style>
