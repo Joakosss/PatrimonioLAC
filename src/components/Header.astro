@@ -203,6 +203,14 @@ const { logo, nav } = text.frontmatter;
     display: none;
   }
 
+  @media (max-width: 1000px) {
+    .nav-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 2rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .hamburger {
       display: flex;
